@@ -10,8 +10,6 @@
 <link rel="stylesheet" href="style.css">
 <link rel="manifest" href="manifest.json">
 
-<meta name="theme-color" content="#0f172a">
-
 </head>
 
 <body>
@@ -22,10 +20,37 @@
 
 <div id="home">
 
-<button onclick="showLearn()">Learn Mode</button>
-<button onclick="showQuizMenu()">Quiz Mode</button>
+<button onclick="showLearn()">Learn</button>
+<button onclick="showQuizMenu()">Quiz</button>
+<button onclick="showAnalytics()">Analytics</button>
+<button onclick="showReview()">Review Mistakes</button>
 
 </div>
+
+
+<div id="analytics" class="hidden">
+
+<h2>Kana Heatmap</h2>
+
+<div id="heatmap"></div>
+
+<button onclick="goHome()">Back</button>
+
+</div>
+
+
+<div id="review" class="hidden">
+
+<h2>Wrong Kana</h2>
+
+<div id="wrongList"></div>
+
+<button onclick="practiceWeak()">Practice Weak Kana</button>
+
+<button onclick="goHome()">Back</button>
+
+</div>
+
 
 <div id="learn" class="hidden">
 
@@ -36,6 +61,7 @@
 <button onclick="goHome()">Back</button>
 
 </div>
+
 
 <div id="quizMenu" class="hidden">
 
@@ -49,14 +75,10 @@
 
 </div>
 
+
 <div id="quiz" class="hidden">
 
-<div class="topbar">
-
-<span id="progress"></span>
-<span id="timer"></span>
-
-</div>
+<button onclick="goHome()">Back</button>
 
 <div id="kana" class="kana"></div>
 
@@ -69,7 +91,7 @@
 
 </div>
 
-<div id="stats"></div>
+<div id="feedback"></div>
 
 </div>
 
@@ -77,12 +99,6 @@
 
 <script src="kana-data.js"></script>
 <script src="app.js"></script>
-
-<script>
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
-}
-</script>
 
 </body>
 </html>
