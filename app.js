@@ -3,11 +3,6 @@ let current=null
 
 let progress=JSON.parse(localStorage.getItem("kanaProgress"))||{}
 
-let stats={correct:0,wrong:0}
-
-let timer
-let time=10
-
 function goHome(){
 hideAll()
 document.getElementById("home").classList.remove("hidden")
@@ -67,21 +62,11 @@ nextQuestion()
 
 }
 
-/* HARD CHARACTER AI */
-
 function weight(k){
 
 let p=progress[k.kana]||{c:0,w:0}
 
-/*
-AI formula
-more wrong = higher weight
-more correct = lower weight
-*/
-
-let score = (p.w+1) - (p.c*0.3)
-
-/* mastered kana appear less */
+let score=(p.w+1)-(p.c*0.3)
 
 if(p.c>=5) score*=0.2
 
@@ -107,8 +92,6 @@ return weighted[Math.floor(Math.random()*weighted.length)]
 
 }
 
-/* QUIZ */
-
 function nextQuestion(){
 
 current=pickKana()
@@ -131,65 +114,21 @@ document.querySelectorAll(".opt").forEach((b,i)=>{
 b.textContent=options[i]
 })
 
-startTimer()
-
 }
-
-/* TIMER */
-
-function startTimer(){
-
-time=10
-document.getElementById("timer").textContent=time
-
-timer=setInterval(()=>{
-
-time--
-document.getElementById("timer").textContent=time
-
-if(time<=0){
-
-clearInterval(timer)
-
-stats.wrong++
-
-updateStats()
-
-nextQuestion()
-
-}
-
-},1000)
-
-}
-
-/* ANSWER */
 
 function answer(btn){
-
-clearInterval(timer)
-
-let feedback=document.getElementById("feedback")
 
 let p=progress[current.kana]||{c:0,w:0}
 
 if(btn.textContent===current.romaji){
 
-stats.correct++
 p.c++
-
-btn.style.background="#22c55e"
-
-feedback.innerHTML="<span class='correct'>Correct!</span>"
+document.getElementById("feedback").innerHTML="Correct!"
 
 }else{
 
-stats.wrong++
 p.w++
-
-btn.style.background="#ef4444"
-
-feedback.innerHTML="<span class='wrong'>Wrong! Correct: "+current.romaji+"</span>"
+document.getElementById("feedback").innerHTML="Wrong! Correct: "+current.romaji
 
 }
 
@@ -197,44 +136,14 @@ progress[current.kana]=p
 
 localStorage.setItem("kanaProgress",JSON.stringify(progress))
 
-updateStats()
-
 setTimeout(()=>{
 
-feedback.innerHTML=""
-
-document.querySelectorAll(".opt").forEach(b=>{
-b.style.background=""
-})
-
+document.getElementById("feedback").innerHTML=""
 nextQuestion()
 
-},1200)
+},1000)
 
 }
-
-/* STATS */
-
-function updateStats(){
-
-document.getElementById("stats").textContent=
-"Correct "+stats.correct+" | Wrong "+stats.wrong+" | Mastered "+masteredCount()
-
-}
-
-function masteredCount(){
-
-let count=0
-
-Object.values(progress).forEach(p=>{
-if(p.c>=5) count++
-})
-
-return count
-
-}
-
-/* ANALYTICS */
 
 function showAnalytics(){
 
@@ -256,7 +165,6 @@ else if(p.c>=1) color="yellow"
 else if(p.w>=2) color="orange"
 
 let d=document.createElement("div")
-
 d.className="heat "+color
 d.textContent=k.kana
 
@@ -265,8 +173,6 @@ map.appendChild(d)
 })
 
 }
-
-/* REVIEW PAGE */
 
 function showReview(){
 
@@ -290,8 +196,6 @@ list.appendChild(d)
 })
 
 }
-
-/* PRACTICE WEAK */
 
 function practiceWeak(){
 
