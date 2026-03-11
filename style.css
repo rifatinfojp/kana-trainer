@@ -38,6 +38,12 @@ grid-template-columns:repeat(2,1fr);
 gap:10px;
 }
 
+#learnGrid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+}
+
 #heatmap{
 display:grid;
 grid-template-columns:repeat(10,1fr);
