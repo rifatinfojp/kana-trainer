@@ -27,7 +27,7 @@ It helps users quickly recognize kana characters through quizzes and spaced repe
 ## Live Demo
 
 GitHub Pages:
-https://yourusername.github.io/kana-trainer
+https://rifatinfojp.github.io/kana-trainer/
 
 ## How to Run
 
