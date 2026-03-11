@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kana Trainer</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+
+</head>
+
+<body>
+
+<div class="app">
+
+<h1>Kana Trainer</h1>
+
+<div id="home">
+
+<button onclick="showLearn()">Learn Mode</button>
+<button onclick="showQuizMenu()">Quiz Mode</button>
+
+</div>
+
+<div id="learn" class="hidden">
+
+<h2>Learn Kana</h2>
+
+<div id="learnGrid"></div>
+
+<button onclick="goHome()">Back</button>
+
+</div>
+
+<div id="quizMenu" class="hidden">
+
+<h2>Select Quiz</h2>
+
+<button onclick="startQuiz('hiragana')">Hiragana</button>
+<button onclick="startQuiz('katakana')">Katakana</button>
+<button onclick="startQuiz('combined')">Combined</button>
+
+<button onclick="goHome()">Back</button>
+
+</div>
+
+<div id="quiz" class="hidden">
+
+<div class="topbar">
+
+<span id="progress"></span>
+<span id="timer"></span>
+
+</div>
+
+<div id="kana" class="kana"></div>
+
+<div class="options">
+
+<button class="opt" onclick="answer(this)"></button>
+<button class="opt" onclick="answer(this)"></button>
+<button class="opt" onclick="answer(this)"></button>
+<button class="opt" onclick="answer(this)"></button>
+
+</div>
+
+<div id="stats"></div>
+
+</div>
+
+</div>
+
+<script src="kana-data.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
