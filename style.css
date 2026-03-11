@@ -1,23 +1,18 @@
 body{
-
 background:#0f172a;
 color:white;
 font-family:sans-serif;
 margin:0;
-
 }
 
 .app{
-
 max-width:700px;
 margin:auto;
 padding:20px;
 text-align:center;
-
 }
 
 button{
-
 background:#1e293b;
 color:white;
 border:none;
@@ -26,62 +21,38 @@ margin:10px;
 border-radius:8px;
 font-size:16px;
 cursor:pointer;
-
-}
-
-button:hover{
-
-background:#334155;
-
 }
 
 .hidden{
-
 display:none;
-
-}
-
-#learnGrid{
-
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:10px;
-
-}
-
-#learnGrid div{
-
-background:#1e293b;
-padding:12px;
-border-radius:6px;
-
 }
 
 .kana{
-
 font-size:90px;
 margin:30px;
-
 }
 
 .options{
-
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:10px;
-
 }
 
-.opt{
-
-padding:16px;
-font-size:18px;
-
+#heatmap{
+display:grid;
+grid-template-columns:repeat(10,1fr);
+gap:6px;
+margin-top:20px;
 }
 
-.topbar{
-
-display:flex;
-justify-content:space-between;
-
+.heat{
+padding:10px;
+border-radius:6px;
+font-size:20px;
 }
+
+.red{background:#ef4444}
+.orange{background:#f97316}
+.yellow{background:#eab308}
+.green{background:#22c55e}
+.blue{background:#3b82f6}
